@@ -8,7 +8,9 @@ This is a simple Tic Tac Toe game implemented for mobile devices. It allows two 
 - Interactive Gameplay: Tap on the squares to make your moves and try to get three in a row.
 - Game Result: The game will announce the winner or declare a draw at the end of each match.
 - Reset: Start a new game with a single tap to reset the board.
+## ScreenShot
 
+![tictactoe](https://github.com/adityait019/Tic_Tac_Toe/assets/78639310/c39ee402-e5e8-4184-b62c-b0bd6d940cc8)
 
 ## Technologies Used
 
