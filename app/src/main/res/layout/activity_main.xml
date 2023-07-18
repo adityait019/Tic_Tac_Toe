@@ -6,21 +6,30 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/purple_200"
+    android:background="@drawable/background_widgets"
     tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/yellow"
+        android:fontFamily="@font/alfa_slab_one"
+        android:textSize="30sp"/>
 
     <GridLayout
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="3">
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn1"
-            android:layout_height="60dp"
             android:layout_width="60dp"
-            android:onClick="tap"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:contentDescription="@string/btn"
-            />
+            android:onClick="tap"
+            tools:ignore="DuplicateSpeakableTextCheck" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn2"
             android:layout_height="60dp"
@@ -86,15 +95,28 @@
            />
 
     </GridLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_reset_button"
+        android:contentDescription="@string/reset"
+
+        android:src="@drawable/reset_game" />
+
     <TextView
         android:id="@+id/txtResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:ems="6"
-        android:text=""
-        android:textSize="20sp"
-        android:textColor="@color/black">
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center"
+        android:text="@string/result"
+        android:textColor="@color/yellow"
+        android:textSize="40sp">
 
     </TextView>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
+    AppCompatImageButton Reset;
     String b11,b12,b13,b21,b22,b23,b31,b32,b33;
     TextView textView;
     int flag=0;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView=findViewById(R.id.txtResult);
         init();
+        Reset.setOnClickListener(v -> reset());
 
     }
     private void init()
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         b7=findViewById(R.id.btn7);
         b8=findViewById(R.id.btn8);
         b9=findViewById(R.id.btn9);
+        Reset=findViewById(R.id.reset);
+
     }
     public void tap(View view)
     {
@@ -46,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
             count++;
             if (flag == 0) {
                 currentButton.setText("X");
-                currentButton.setBackgroundColor(getResources().getColor(R.color.green));
+                currentButton.setBackgroundColor(getResources().getColor(R.color.green,null));
                 flag = 1;
             } else {
                 currentButton.setText(("O"));
-                currentButton.setBackgroundColor(getResources().getColor(R.color.red));
+                currentButton.setBackgroundColor(getResources().getColor(R.color.red,null));
                 flag = 0;
             }
             if (count > 4) {
@@ -65,90 +70,44 @@ public class MainActivity extends AppCompatActivity {
                 b33 = b9.getText().toString();
                 //conditions
                 if (b11.equals(b12) && b12.equals(b13) && !b11.equals("")) {
-                    textView.setText(b11);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    textView.setText(getString(R.string.winner,b11));
 
-//                    reset();
+                    new Handler().postDelayed(this::reset, 3000);
+
                 } else if (b11.equals(b21) && b21.equals(b31) && !b21.equals("")) {
-                    textView.setText(b11);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    textView.setText(getString(R.string.winner,b11));
+                    new Handler().postDelayed(this::reset, 3000); // 5000 milliseconds = 5 seconds
 
-//                    reset();
                 } else if (b11.equals(b22) && b22.equals(b33) && !b11.equals("")) {
-                    textView.setText(b11);
+                    textView.setText(getString(R.string.winner,b11));
 //                    reset();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    new Handler().postDelayed(this::reset, 3000); // 5000 milliseconds = 5 seconds
 
                 } else if (b21.equals(b22) && b22.equals(b23) && !b23.equals("")) {
-                    textView.setText(b21);
+                    textView.setText(getString(R.string.winner,b21));
 //                    reset();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    new Handler().postDelayed(this::reset, 3000); // 5000 milliseconds = 5 seconds
                 } else if (b31.equals(b32) && b32.equals(b33) && !b33.equals("")) {
-                    textView.setText(b31);
+                    textView.setText(getString(R.string.winner,b31));
 //                    reset();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    new Handler().postDelayed(this::reset, 3000); // 5000 milliseconds = 5 seconds
                 } else if (b31.equals(b22) && b22.equals(b13) && !b22.equals("")) {
-                    textView.setText(b31);
+                    textView.setText(getString(R.string.winner,b31));
 //                    reset();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    new Handler().postDelayed(this::reset, 3000); // 5000 milliseconds = 5 seconds
                 } else if (b12.equals(b22) && b22.equals(b32) && !b22.equals("")) {
-                    textView.setText(b12);
+                    textView.setText(getString(R.string.winner,b12));
 //                    reset();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    new Handler().postDelayed(this::reset, 3000); // 5000 milliseconds = 5 seconds
                 } else if (b13.equals(b23) && b23.equals(b33) && !b33.equals("")) {
-                    textView.setText(b13);
+                    textView.setText(getString(R.string.winner,b13));
 //                    reset();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    new Handler().postDelayed(this::reset, 3000); // 5000 milliseconds = 5 seconds
                 }else if(count==9)
                 {
 //                    reset();
-                    textView.setText("Tie");
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            reset();
-                        }
-                    }, 2000); // 5000 milliseconds = 5 seconds
+                    textView.setText(getString(R.string.Tie));
+                    new Handler().postDelayed(this::reset, 2000); // 5000 milliseconds = 5 seconds
                 }
 
             }
@@ -167,15 +126,15 @@ public class MainActivity extends AppCompatActivity {
         b8.setText("");
         b9.setText("");
         textView.setText("");
-        b1.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b2.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b3.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b4.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b5.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b6.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b7.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b8.setBackgroundColor(getResources().getColor(R.color.transparent));
-        b9.setBackgroundColor(getResources().getColor(R.color.transparent));
+        b1.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b2.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b3.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b4.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b5.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b6.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b7.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b8.setBackgroundColor(getResources().getColor(R.color.transparent,null));
+        b9.setBackgroundColor(getResources().getColor(R.color.transparent,null));
         flag=0;
         count=0;
     }

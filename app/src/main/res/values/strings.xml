@@ -2,4 +2,8 @@
     <string name="app_name">TicTacToe</string>
     <string name="rst">Reset</string>
     <string name="btn">ButtonToTap</string>
+    <string name="reset">Reset</string>
+    <string name="result">Result</string>
+    <string name="winner">Winner :%s</string>
+    <string name="Tie">Tie</string>
 </resources>
